@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Portfolio - Sagarika Nagar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', 'Roboto', sans-serif; line-height: 1.6; color: #333; background: #f0efef; scroll-behavior: smooth; }
+        h1,h2,h3 { font-family: 'Playfair Display', serif; }
+        a { text-decoration: none; color: #002fff; transition: color 0.3s; }
+        a:hover { color: #0056b3; }
+
+        /* Navigation */
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); z-index: 10; padding: 1rem 2rem; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        nav ul { list-style: none; display: flex; justify-content: center; }
+        nav li { margin: 0 1.5rem; }
+        nav a { font-weight: 500; color: #333; }
+        nav a:hover { color: #007bff; }
+
+        /* Hero Section */
+        #hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(135deg, hwb(211 0% 0% / 0.1), rgba(164, 208, 255, 0.1)), url('https://www.technostructacademy.com/blog/wp-content/uploads/2024/08/Urban-Planning-and-Design-The-Future-of-Cities-1200x675.webp'); background-size: cover; background-position: center; color: #f0eded; padding: 2rem; position: relative; }
+        #hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background:  rgba(0,0,0,0.4); z-index: 1; }
+        #hero > * { position: relative; z-index: 2; }
+        #hero h1 { font-size: 3.5rem; margin-bottom: 0.5rem; font-weight: 700; }
+        #hero p { font-size: 1.5rem; margin-bottom: 2rem; font-weight: 300; }
+        #hero button { padding: 1rem 2rem; background: #007bff; color: #f1eeee; border: none; border-radius: 50px; cursor: pointer; font-size: 1.1rem; transition: all 0.3s; box-shadow: 0 4px 15px rgba(0,123,255,0.3); }
+        #hero button:hover { background: #0056b3; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,123,255,0.4); }
+
+        /* Sections */
+        section { padding: 5rem 2rem; min-height: 100vh; }
+        section h2 { text-align: center; margin-bottom: 3rem; font-size: 2.5rem; font-weight: 500; color: #333; }
+
+        /* About Me */
+        #about { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 3rem; background: #fff; border-radius: 10px; padding: 3rem; margin: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        #about img { width: 250px; height: 250px; border-radius: 50%; object-fit: cover; border: 5px solid #007bff; }
+        #about .bio { max-width: 600px; }
+        #about .bio h3 { margin-bottom: 1rem; color: #007bff; }
+        #about .bio h2 {margin-bottom: 1rem; color: #333; }
+        #about .tech { display: flex;  gap: 1rem; margin-top: 2rem; flex-wrap: wrap; }
+        #about .tech span { background: #007bff; color: #fff; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; }
+
+        /* Map Section */
+        #map { background: #fff; border-radius: 10px; padding: 3rem; margin: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; }
+        /* Map image container: responsive and preserves image aspect ratio */
+        #map .image-container { position: relative; overflow: hidden; width: 100%; max-width:500px; height: 500px; margin: 0 auto; border: 2px solid #ddd; border-radius: 10px; }
+        #map .zoomable-image { width: 100%; height: auto; object-fit: contain; transition: transform 0.3s ease; cursor: grab; display:block; }
+        #map .zoomable-image:active { cursor: grabbing; }
+        #map .zoom-controls { margin-top: 1rem; }
+        #map .zoom-controls button { padding: 0.5rem 1rem; margin: 0 0.5rem; background: #007bff; color: #fff; border: none; border-radius: 5px; cursor: pointer; transition: background 0.3s; }
+        #map .zoom-controls button:hover { background: #0056b3; }
+
+        /* Projects */
+        #projects { background: #f4f4f4; }
+        #projects .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; }
+        .project-card { background: #fff; border-radius: 10px; padding: 2rem; width: 350px; transition: all 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .project-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.2); }
+        .project-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 5px; }
+        .project-card h3 { margin: 1.5rem 0 1rem; color: #007bff; }
+        .project-card p { margin-bottom: 1rem; }
+        .project-card .tech { font-size: 0.9rem; color: #666; }
+        .project-card a { display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background: #007bff; color: #fff; border-radius: 5px; transition: background 0.3s; }
+        .project-card a:hover { background: #0056b3; }
+
+        /* Contact */
+        #contact { background: #fff; border-radius: 10px; padding: 3rem; margin: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        #contact form { max-width: 600px; margin: 0 auto; }
+        #contact input, #contact textarea { width: 100%; padding: 1rem; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 5px; font-family: inherit; }
+        #contact button { padding: 1rem 2rem; background: #007bff; color: #fff; border: none; border-radius: 5px; cursor: pointer; transition: background 0.3s; }
+        #contact button:hover { background: #0056b3; }
+        #contact .social { margin-top: 2rem; }
+        #contact .social a { margin: 0 1rem; font-size: 1.5rem; }
+
+        /* Footer */
+        footer { background: #333; color: #f6f3f3; text-align: center; padding: 2rem; }
+        footer p { margin-bottom: 1rem; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            #hero h1 { font-size: 2.5rem; }
+            #about { flex-direction: column; text-align: center; }
+            .project-card { width: 100%; }
+            #map .image-container { height: 200px; }
+        }
+        @media (max-width: 600px) {
+            .intro-points { grid-template-columns: 1fr; }
+        }
+
+        /* Introduction points */
+        .intro-content p { margin-bottom: 1rem; }
+        .intro-points { list-style: none; margin-top: 1rem; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+        .intro-points li { background: #fbfdff; padding: 0.75rem 1rem; border-left: 4px solid #007bff; border-radius: 8px; font-weight: 600; color: #1f2937; }
+        /* Section header with decorative star and lines */
+        .section-title-main { text-align: center; font-size: 3rem; letter-spacing: 2px; color: #1f2937; margin-top: 1rem; text-transform: uppercase; }
+        .decor { display:flex; align-items:center; justify-content:center; gap:1rem; margin: 0.75rem 0 1.5rem; }
+        .decor .line { height:6px; width:140px; background:#22303a; border-radius:4px; display:inline-block; }
+        .decor .star { color:#22303a; font-size:1.4rem; }
+
+        /* Course information card (centered light-blue panel) */
+        .course-card { max-width:880px; margin: 1.5rem auto; background:#e6f6ff; border-radius:12px; padding:2.5rem 2rem; border:1px solid #d6eefc; box-shadow: 0 24px 60px rgba(11,52,72,0.06); text-align:center; }
+        .course-card dl { margin: 0; }
+        .course-card dt { font-weight:700; color:#0b3b57; margin-top:1rem; }
+        .course-card dd { margin:0.35rem 0 0.75rem 0; color:#15384a; font-weight:500; }
+        .course-card .lead { margin-bottom:1rem }
+        @media (max-width:768px) { .section-title-main { font-size:2.2rem } .decor .line{ width:90px } .course-card{ padding:1.5rem } }
+        /* Large informational card (uses same site colors / rounded borders) */
+        .info-card { background: #dff4ff; border-radius: 12px; padding: 2.25rem; margin: 2rem auto; max-width: 1100px; border: 1px solid #d0ecff; box-shadow: 0 8px 24px rgba(8,75,115,0.06); }
+        .info-card h2 { text-align: center; font-size: 2.1rem; margin: 1.75rem 0; color: #0b3b57; }
+        .info-card p { font-size: 1.05rem; color: #15384a; margin: 1.25rem 0; padding-left: 0.5rem; }
+        .info-card p.lead { margin-top: 0.5rem; font-weight: 500; }
+        .info-card .section-title { font-size: 1.9rem; text-align: center; margin: 2rem 0 1rem; color: #0b3b57; }
+        /* Large full-width info panel shown in attachment */
+        .large-info-card { background: #e7f6ff; border-radius: 12px; padding: 2.5rem 3rem; margin: 2rem auto; border: 1px solid #d6eefc; box-shadow: 0 20px 50px rgba(11,52,72,0.05); max-width: 1160px; }
+        .large-info-card h2 { text-align: center; font-size: 1.9rem; color: #0f2b3a; margin-bottom: 1rem; }
+        .large-info-card .section-heading { text-align:center; font-size:2rem; color:#0f2b3a; margin:2.25rem 0 1rem; font-weight:700 }
+        .large-info-card p { color: #1f3944; font-size:1.05rem; line-height:1.85; margin:1rem 0; padding-left:0.5rem }
+        .large-info-card p.lead { font-weight:500 }
+        @media (max-width:900px) { .large-info-card { padding:1.5rem } .large-info-card .section-heading { font-size:1.5rem } }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#map">Project Map</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="hero">
+        <h1>Sagarika Nagar</h1>
+        <p>Innovative Developer & Designer</p>
+        <button onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">View My Work</button>
+    </section>
+
+    <section id="introduction">
+        <h2 class="section-title-main">INTRODUCTION</h2>
+        <div class="decor">
+            <span class="line" aria-hidden="true"></span>
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <span class="line" aria-hidden="true"></span>
+        </div>
+    
+        <div class="course-card">
+            <dl>
+                <dt>Course:</dt>
+                <dd>DAA</dd>
+
+                <dt>Course Code:</dt>
+                <dd>24ECSC2O5</dd>
+
+                <dt>Course Instructor:</dt>
+                <dd>Prof. Prakash Hegade</dd>
+
+                <dt>University:</dt>
+                <dd>KLE Technological University</dd>
+
+                <dt>Topic:</dt>
+                <dd>City Design</dd>
+            </dl>
+        </div>
+    </section>
+
+    <section id="about">
+        <img src="C:\Users\SHYAM P\Documents\DAA\Sham.jpg" alt="Your Professional Photo">
+        <div class="bio">
+             <h3>About Me</h3>
+            <h2>Shyam P Vittalkar</h2>
+            <p>I'm a passionate computer science student interested in software development, cybersecurity, solving problems, and building real-world applications. I love to explore how technology could make life more easy, smart, and efficient, and continuously keep learning new tools, languages, and frameworks for growth as a develope</p>
+            <p></p>
+            <div class="tech">
+                <span><i class="fab fa-html5"></i> HTML5</span>
+                <span><i class="fab fa-css3-alt"></i> CSS3</span>
+                <span><i class="fab fa-js-square"></i> JavaScript</span>
+                <span><i class="fab fa-python"></i> PYTHON</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>My Projects</h2>
+        <div class="container">
+            <div class="project-card">
+                <img src="C:\Users\SHYAM P\Documents\DAA\city.png" alt="E-commerce Web App">
+                <h3>Sagarika Nagar</h3>
+                <p></p>
+                <p class="tech">Technologies: Python, Java script, HTML</p>
+                <a href="sham.html" target="_blank" rel="noopener noreferrer">View Project</a>
+            </div>
+    </section>  
+    <section id="map">
+        <h2>PROJECT MAP</h2>
+        <div class="image-container">
+            <img id="zoomableImage" class="zoomable-image" src="project%20design.jpg" alt="Project Map Image">
+        </div>
+        <div class="zoom-controls" style="text-align:center; margin-top:1rem;">
+            <a href="project%20design.jpg" target="_blank" rel="noopener" style="margin-left:1rem; color:#007bff;">Open full image</a>
+        </div>
+        
+    </section>      
+
+    <!-- Large information panel inserted from user attachment -->
+    <div class="large-info-card">
+        <h2 style="text-align:center; margin-bottom:0.5rem">What is the course about?</h2>
+        <p class="lead">— Design and analysis of algorithms is more than a branch of computer science. It is the core of computer science, and, in all fairness, can be said to be relevant to most of science, business, and technology. The course is about understanding the interesting patterns existing in nature as many natural processes can inspire computational algorithms and vice versa. It helps in development of analytical thinking which can help in various problem solving strategies</p>
+
+        <h3 class="section-heading">What kind of data structures and algorithms have you studied?</h3>
+        <p>— Exploring data structures feels like a journey through a fascinating family. From the continuity of memory blocks in arrays and strings to the interlinked nature of web pages seen in linked lists, each structure tells a story. Stacks and queues evoke everyday images of biscuit piles and waiting lines, while trees and tries expand our understanding into hierarchies and efficient searches. Skip lists, inspired by coin tosses, add an element of randomness with precision.</p>
+
+        <h3 class="section-heading">How do you connect the course with real time applications?</h3>
+        <p>— We are both aware and oblivious to the algorithms that permeate our lives, much like the omnipresent air we breathe. Dijkstra’s Algorithm guides us home through GPS, ensuring the quickest route, while sorting algorithms organize massive datasets in commerce platforms. These practical connections demonstrate how theoretical ideas translate into robust, real-world systems.</p>
+    </div>
+
+    
+
+    
+
+    <footer>
+        <p>&copy; 2023 Shyam P V. All rights reserved. | Designed with passion</p>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Simple form submission (for demo purposes)
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+        });
+         
+        // Zoom functionality for the map image
+        const zoomableImage = document.getElementById('zoomableImage');
+        const zoomInBtn = document.getElementById('zoomIn');
+        const zoomOutBtn = document.getElementById('zoomOut');
+        const resetZoomBtn = document.getElementById('resetZoom');
+        let scale = 1;
+
+        zoomInBtn.addEventListener('click', () => {
+            scale += 0.2;
+            zoomableImage.style.transform = `scale(${scale})`;
+        });
+
+        zoomOutBtn.addEventListener('click', () => {
+            if (scale > 0.2) {
+                scale -= 0.2;
+                zoomableImage.style.transform = `scale(${scale})`;
+            }
+        });
+
+        resetZoomBtn.addEventListener('click', () => {
+            scale = 1;
+            zoomableImage.style.transform = `scale(${scale})`;
+        });
+
+        // Optional: Mouse wheel zoom
+        zoomableImage.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            if (e.deltaY < 0) {
+                scale += 0.1;
+            } else {
+                if (scale > 0.1) scale -= 0.1;
+            }
+            zoomableImage.style.transform = `scale(${scale})`;
+        });
+    </script>
+</body>
+</html>
