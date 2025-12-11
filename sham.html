@@ -1,44 +1,999 @@
 <!doctype html>
 <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAA - Sagarika Nagar Business Cases</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
     <style>
-      body { font-family: Arial, Helvetica, sans-serif; background:#eaeaec; color:#222; padding: 2rem}
-      .wrap { max-width:900px; margin:0 auto; background:#bdeee9; padding:1.5rem; border-radius:8px; box-shadow:0 8px 30px rgba(0,0,0,0.06) }
-      h1{ margin-bottom:6rem }
-      .meta{ color:#666; margin-bottom:1rem }
-      .content { margin-top:1rem; line-height:1.6}
-      .actions{ margin-top:1.25rem }
-      .btn { display:inline-block; padding:0.5rem 0.9rem; background:#007bff; color:#fff; border-radius:6px; text-decoration:none }
-
-      /* Top navigation (matching attached header) */
-      .top-header { max-width:1100px; margin:0 auto 1.25rem; display:flex; align-items:center; }
-      .nav-list { list-style:none; margin:0; padding:0; display:flex; gap:2.25rem; align-items:center }
-      .nav-list li { display:inline-block }
-      .nav-list a { text-decoration:none; color:#222; font-family: 'Poppins', Arial, sans-serif; font-size:1.05rem }
-      .nav-list a.active { background:#2563eb; color:#fff; padding:0.15rem 0.45rem; border-radius:3px }
-    </style>
-    </header>
-
-    <div class="wrap">
-      <h1>Project: Sham</h1>
-
-      <div id="projectDisplay" class="content" aria-live="polite"></div>
-    <div class="wrap">
-      <h1>Project: Sham</h1>
-  
-
-      <p>hi</p>
-	
-    <script>
-      const display = document.getElementById('projectDisplay');
-      const saved = localStorage.getItem('sham_content');
-      const defaultHTML = `Describe the project here. Add images using &lt;img src=&quot;...&quot;&gt; or links to files you want to show.`;
-      // Show saved content if present, otherwise default
-      if (saved && saved.trim().length > 0) {
-        display.innerHTML = saved;
-      } else {
-        display.innerHTML = defaultHTML;
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      
+      /* Navigation Header */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.97);
+        backdrop-filter: blur(10px);
+        z-index: 100;
+        padding: 1rem 2rem;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       }
-    </script>
+      
+      nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      
+      nav a {
+        font-weight: 500;
+        color: #333;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        font-size: 1rem;
+        font-family: 'Poppins', sans-serif;
+      }
+      
+      nav a:hover {
+        color: #667eea;
+      }
+      
+      body {
+        padding-top: 80px;
+      }
+      body { 
+        font-family: 'Inter', 'Segoe UI', Arial, sans-serif; 
+        background: linear-gradient(135deg, #69d6fa 0%, #0448f5 100%);
+        color: #333; 
+        padding: 2rem;
+        line-height: 1.7;
+        font-weight: 400;
+      }
+      .wrap { 
+        max-width: 1000px; 
+        margin: 0 auto; 
+        background: #fff; 
+        padding: 2.5rem; 
+        border-radius: 12px; 
+        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      }
+      
+      h1 { 
+        color: #667eea;
+        font-size: 2.5rem; 
+        margin-bottom: 0.5rem;
+        text-align: center;
+        font-weight: 800;
+        font-family: 'Playfair Display', serif;
+        letter-spacing: -0.5px;
+      }
+      
+      h2 {
+        color: #2c5aa0;
+        font-size: 1.8rem;
+        margin-top: 2.5rem;
+        margin-bottom: 1rem;
+        border-bottom: 3px solid #2c5aa0;
+        padding-bottom: 0.5rem;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        letter-spacing: -0.3px;
+      }
+      
+      h3 {
+        color: #1e40af;
+        font-size: 1.4rem;
+        margin-top: 1.8rem;
+        margin-bottom: 0.8rem;
+        font-weight: 700;
+        font-family: 'Poppins', sans-serif;
+        letter-spacing: -0.2px;
+      }
+      
+      h4 {
+        color: #555;
+        font-size: 1.1rem;
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+        font-family: 'Poppins', sans-serif;
+      }
+      
+      .intro-section {
+        background: #f0f4ff;
+        padding: 1.5rem;
+        border-left: 5px solid #667eea;
+        margin-bottom: 2rem;
+        border-radius: 8px;
+      }
+      
+      .zones-list {
+        background: #f8f9ff;
+        padding: 2rem;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+      }
+      
+      .zones-list ol {
+        margin-left: 2rem;
+      }
+      
+      .zones-list li {
+        margin-bottom: 0.8rem;
+        font-size: 1.05rem;
+      }
+      
+      .business-case {
+        background: #fafbff;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        border-radius: 8px;
+        border-left: 5px solid #1e40af;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      }
+      
+      .case-number {
+        background: #667eea;
+        color: white;
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+      }
+      
+      .case-field {
+        margin-bottom: 1.2rem;
+      }
+      
+      .case-field-label {
+        font-weight: 700;
+        color: #1e40af;
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 0.95rem;
+      }
+      
+      .case-field-content {
+        margin-top: 0.5rem;
+        color: #444;
+        font-size: 1.05rem;
+        padding-left: 1rem;
+        border-left: 3px solid #1e40af;
+      }
+      
+      .bullet-list {
+        list-style: none;
+        margin-left: 1.5rem;
+        margin-top: 0.5rem;
+      }
+      
+      .bullet-list li {
+        margin-bottom: 0.6rem;
+        position: relative;
+        padding-left: 1.5rem;
+      }
+      
+      .bullet-list li:before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: #1e40af;
+        font-weight: bold;
+      }
+      
+      .conclusion {
+        background: linear-gradient(135deg, #71cef4 0%, #034db5 100%);
+        color: white;
+        padding: 2rem;
+        border-radius: 8px;
+        margin-top: 3rem;
+        text-align: center;
+      }
+      
+      .conclusion h2 {
+        color: white;
+        border-bottom: 2px solid white;
+      }
+      
+      .conclusion p {
+        font-size: 1.1rem;
+        margin-top: 1rem;
+        line-height: 1.8;
+      }
+      
+      .meta { 
+        color: #666; 
+        margin-bottom: 1rem;
+        text-align: center;
+        font-style: italic;
+      }
+      
+      .content { 
+        margin-top: 1rem; 
+        line-height: 1.8;
+      }
+      
+      .divider {
+        height: 2px;
+        background: linear-gradient(to right, #92d4ee, transparent);
+        margin: 2rem 0;
+      }
+      
+      strong {
+        color: #1e40af;
+      }
+      
+      .link-placeholder {
+        margin-top: 2.5rem;
+        margin-bottom: 1rem;
+        padding: 2rem;
+        border: 2px dashed #1e40af;
+        border-radius: 8px;
+        background: #eff6ff;
+        min-height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        font-weight: 500;
+      }
+      
+      .link-placeholder a {
+        color: white;
+        background: #1e40af;
+        text-decoration: none;
+        font-weight: 600;
+        padding: 0.8rem 1.5rem;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+        display: inline-block;
+        border: none;
+      }
+      
+      .link-placeholder a:hover {
+        background: #1e3a8a;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+      }
+    </style>
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav>
+      <ul>
+        <li><a href="DAA website 2 1.html">Home</a></li>
+        <li><a href="DAA website 2 1.html#about">About Me</a></li>
+        <li><a href="DAA website 2 1.html#project">Project</a></li>
+        <li><a href="DAA website 2 1.html#Map">Project Map</a></li>
+      </ul>
+    </nav>
+    
+    <div class="wrap">
+      <h1>🏙️ Sagarika Nagar - DAA Business Cases</h1>
+      <p class="meta">Design and Analysis of Algorithms Applied to Smart City Planning</p>
+      <div class="divider"></div>
+      
+      <!-- SECTION A: SELECTED CITY ZONES -->
+      <section>
+        <h2>SECTION A – SELECTED CITY ZONES OF SAGARIKA NAGAR</h2>
+        
+        <div style="margin: 2rem 0;">
+          <h3>Residential Zone</h3>
+          <p style="margin: 0.8rem 0;">Most people live here, so we must manage daily needs like water, electricity, buses, safety, and parking.</p>
+          <p style="margin: 0.8rem 0;">Good planning here improves the quality of life for maximum citizens.</p>
+        </div>
+        
+        <div style="margin: 2rem 0;">
+          <h3>Commercial (Central City / Market Area)</h3>
+          <p style="margin: 0.8rem 0;">This area has shops, malls, banks, and offices, so there is heavy foot traffic and vehicle traffic.</p>
+          <p style="margin: 0.8rem 0;">Smart systems here can reduce crowding, improve business, and make shopping safer and faster.</p>
+        </div>
+        
+        <div style="margin: 2rem 0;">
+          <h3>IT Park &amp; Education Hub</h3>
+          <p style="margin: 0.8rem 0;">Has colleges, coaching centres, and software companies with many students and employees moving in and out.</p>
+          <p style="margin: 0.8rem 0;">Needs efficient transport, fast internet-based services, and strong safety/emergency planning.</p>
+        </div>
+        
+        <div style="margin: 2rem 0;">
+          <h3>Industrial &amp; Logistics Zone</h3>
+          <p style="margin: 0.8rem 0;">Factories, warehouses, and transport godowns are located here; many trucks and goods move daily.</p>
+          <p style="margin: 0.8rem 0;">Better scheduling and routing can reduce delays and save fuel and money.</p>
+        </div>
+        
+        <div style="margin: 2rem 0;">
+          <h3>Airport &amp; Transport Hub (Bus/Railway)</h3>
+          <p style="margin: 0.8rem 0;">Key entry and exit point of Sagarika Nagar; tourists, business travellers, and cargo pass through here.</p>
+          <p style="margin: 0.8rem 0;">Needs smart parking, quick security checks, and fast connection to other city zones.</p>
+        </div>
+      </section>
+      
+      <div class="divider"></div>
+      
+      <!-- SECTION B: BUSINESS CASES 1-10 -->
+      <section>
+        <h2>SECTION B – BUSINESS CASES 1–10</h2>
+      
+      <!-- Business Case 1 -->
+      <div class="business-case">
+        <h3>Business Case 1: Smart Bus Route Optimisation</h3>
+        
+        <div class="case-field">
+          <div class="case-field-label">Title:</div>
+          <div class="case-field-content">Fast &amp; Cheap Bus Routes between Residential, IT Park and Commercial Area</div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Zones Involved:</div>
+          <div class="case-field-content">Residential Zone ↔ IT Park &amp; Education Hub ↔ Commercial (Central City)</div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Real-world Problem:</div>
+          <div class="case-field-content">Many people travel daily from homes to IT Park and Commercial Area. Current bus routes are fixed and not always shortest. This increases travel time and fuel cost.</div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Goal / Objective:</div>
+          <div class="case-field-content">Find shortest-time or shortest-distance bus routes between major bus stops in these zones.</div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Chosen Data Structure / Algorithm:</div>
+          <div class="case-field-content"><strong>Dijkstra's Shortest Path Algorithm</strong> (using a graph)</div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Why This is Suitable:</div>
+          <ul class="bullet-list">
+            <li>The city road network can be modelled as a graph (junctions = nodes, roads = edges with weights like distance or time).</li>
+            <li>Dijkstra finds the minimum cost path from one source stop to all other stops, which matches our need for shortest bus routes.</li>
+          </ul>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">High-level Working / Steps:</div>
+          <ul class="bullet-list">
+            <li>Represent all bus stops as nodes and roads between them with travel time as edge weight.</li>
+            <li>Choose the starting stop (e.g., a big residential bus stand) as the source.</li>
+            <li>Use Dijkstra to update the shortest known distance to each neighbouring stop.</li>
+            <li>Keep picking the next stop with minimum current distance (using a min-heap / priority queue).</li>
+            <li>Continue until all stops are processed.</li>
+          </ul>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Time &amp; Space Efficiency:</div>
+          <ul class="bullet-list">
+            <li>Time Complexity: O((V + E) log V) using a min-heap (V = stops, E = roads).</li>
+            <li>Space Complexity: O(V + E) for storing the graph and distance arrays.</li>
+          </ul>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Expected Output / Real-world Benefit:</div>
+          <ul class="bullet-list">
+            <li>Buses follow faster routes, passengers reach earlier, and fuel usage is reduced.</li>
+            <li>Easy to re-run if traffic conditions or roadworks change.</li>
+          </ul>
+        </div>
+        
+        <div class="link-placeholder"><a href="dijkstra.cpp" id="link-dijkstra">View Dijkstra code</a></div>
+      </div>
+      
+      <!-- Business Case 2 -->
+      <div class="business-case">
+        <h3>Business Case 2: Emergency Ambulance Dispatch System</h3>
+        
+        <div class="case-field">
+          <div class="case-field-label">Title:</div>
+          <div class="case-field-content">Nearest Ambulance Finder for Road Accidents</div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Zones Involved:</div>
+          <div class="case-field-content">Residential Zone, Commercial Area, Airport &amp; Transport Hub, Industrial Zone</div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Real-world Problem:</div>
+          <div class="case-field-content">When an accident happens, control room staff must quickly decide which ambulance to send. If they choose badly, response time increases.</div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Goal / Objective:</div>
+          <div class="case-field-content">Always send the nearest available ambulance to the emergency location.</div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Chosen Data Structure / Algorithm:</div>
+          <div class="case-field-content"><strong>Heap / Priority Queue</strong></div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Why This is Suitable:</div>
+          <ul class="bullet-list">
+            <li>A min-heap priority queue can store ambulances ordered by their current distance or time to reach the accident location.</li>
+            <li>Getting the nearest ambulance becomes simply "take the top element of the heap".</li>
+          </ul>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">High-level Working / Steps:</div>
+          <ul class="bullet-list">
+            <li>When an emergency call comes, calculate estimated distance/time from each available ambulance to the incident location.</li>
+            <li>Insert (distance, ambulance_id) pairs into a min-heap.</li>
+            <li>Extract the minimum element from the heap → gives the best ambulance to send.</li>
+            <li>After dispatch, update that ambulance's status and position.</li>
+          </ul>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Time &amp; Space Efficiency:</div>
+          <ul class="bullet-list">
+            <li>Insertion into heap: O(log n) per ambulance</li>
+            <li>Get nearest ambulance (extract-min): O(log n)</li>
+            <li>Space Complexity: O(n) for n ambulances.</li>
+          </ul>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Expected Output / Real-world Benefit:</div>
+          <ul class="bullet-list">
+            <li>Lower response time, more lives saved, better use of limited ambulances.</li>
+          </ul>
+        </div>
+        
+        <div class="link-placeholder"><a href="minheap.cpp" id="link-minheap">View Min-Heap code</a></div>
+      </div>
+      
+      <!-- Business Case 3 -->
+      <div class="business-case">
+        <h3>Business Case 3: Fast Resident ID &amp; Smart Card Verification</h3>
+        
+        <div class="case-field">
+          <div class="case-field-label">Title:</div>
+          <div class="case-field-content">Instant Smart Card Check at Metro / Bus Gates</div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Zones Involved:</div>
+          <div class="case-field-content">Residential Zone, Commercial Area, IT Park &amp; Education Hub</div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Real-world Problem:</div>
+          <div class="case-field-content">At metro gates or smart bus stops, thousands of people tap their smart cards daily. The system must quickly check if the card is valid and has balance.</div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Goal / Objective:</div>
+          <div class="case-field-content">Verify user identity and card status in constant time to avoid queues.</div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Chosen Data Structure / Algorithm:</div>
+          <div class="case-field-content"><strong>Hash Table / Hashing</strong></div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Why This is Suitable:</div>
+          <ul class="bullet-list">
+            <li>A hash table allows almost O(1) average time lookup using a unique card number as key.</li>
+            <li>Perfect for large-scale systems where many lookups happen per second.</li>
+          </ul>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">High-level Working / Steps:</div>
+          <ul class="bullet-list">
+            <li>Store each smart card record as an entry in a hash table: key = card number, value = user details + balance.</li>
+            <li>When a card is tapped, compute its hash and directly access the record.</li>
+            <li>Check if card is active and has enough balance; then allow or deny entry.</li>
+            <li>Update balance after successful entry.</li>
+          </ul>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Time &amp; Space Efficiency:</div>
+          <ul class="bullet-list">
+            <li>Lookup Time Complexity (average): O(1)</li>
+            <li>Insertion Time Complexity (average): O(1)</li>
+            <li>Space Complexity: O(n) for n smart cards.</li>
+          </ul>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Expected Output / Real-world Benefit:</div>
+          <ul class="bullet-list">
+            <li>Very small waiting time at gates, smooth passenger flow, and quick fraud detection.</li>
+          </ul>
+        </div>
+        
+        <div class="link-placeholder"><a href="hashtable.cpp" id="link-hashtable">View Hash Table code</a></div>
+      </div>
+      
+      <!-- Business Case 4 -->
+      <div class="business-case">
+        <h3>Business Case 4: Smart Power Usage Monitoring in Apartments</h3>
+        
+        <div class="case-field">
+          <div class="case-field-label">Title:</div>
+          <div class="case-field-content">Dynamic Electricity Load Monitoring for Residential Towers</div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Zones Involved:</div>
+          <div class="case-field-content">Residential Zone, Industrial Zone (can also monitor heavy usage there)</div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Real-world Problem:</div>
+          <div class="case-field-content">The power department must monitor how much electricity each apartment block consumes in different hours. They need fast answers for "total usage in this time range" and "update when usage changes".</div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Goal / Objective:</div>
+          <div class="case-field-content">Efficiently perform range sum queries and point updates of electricity usage.</div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Chosen Data Structure / Algorithm:</div>
+          <div class="case-field-content"><strong>Segment Tree</strong></div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Why This is Suitable:</div>
+          <ul class="bullet-list">
+            <li>Segment trees are ideal for range queries (like total power between 2 PM–6 PM) with frequent updates.</li>
+            <li>They provide both fast query and update operations.</li>
+          </ul>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">High-level Working / Steps:</div>
+          <ul class="bullet-list">
+            <li>Represent each time slot (e.g., hourly usage) as an array element.</li>
+            <li>Build a segment tree where each node stores the sum of a range of time slots.</li>
+            <li>For query: to get total usage between time L and R, traverse the segment tree and combine relevant segments.</li>
+            <li>For update: when usage in a particular time slot changes, update that leaf and fix sums up the tree.</li>
+          </ul>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Time &amp; Space Efficiency:</div>
+          <ul class="bullet-list">
+            <li>Build Time: O(n)</li>
+            <li>Query Time: O(log n)</li>
+            <li>Update Time: O(log n)</li>
+            <li>Space Complexity: O(n) (typically about 4n memory).</li>
+          </ul>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Expected Output / Real-world Benefit:</div>
+          <ul class="bullet-list">
+            <li>Quick detection of peak load times, better planning of power supply, and early alert for abnormal usage or theft.</li>
+          </ul>
+        </div>
+        
+        <div class="link-placeholder"><a href="segment_tree.cpp" id="link-segtree">View Segment Tree code</a></div>
+      </div>
+      
+      <!-- Business Case 5 -->
+      <div class="business-case">
+        <h3>Business Case 5: Water Pipeline Leakage &amp; Network Control</h3>
+        
+        <div class="case-field">
+          <div class="case-field-label">Title:</div>
+          <div class="case-field-content">Find Connected Affected Areas in Water Pipeline Network</div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Zones Involved:</div>
+          <div class="case-field-content">Residential Zone, Industrial Zone, Commercial Area</div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Real-world Problem:</div>
+          <div class="case-field-content">When a water main pipeline leaks or breaks, some sectors lose water. The maintenance team must know which sectors are connected to that broken pipe to close valves and reroute supply.</div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Goal / Objective:</div>
+          <div class="case-field-content">Quickly find and group all connected parts of the pipeline network.</div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Chosen Data Structure / Algorithm:</div>
+          <div class="case-field-content"><strong>Union-Find / Disjoint Set</strong></div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Why This is Suitable:</div>
+          <ul class="bullet-list">
+            <li>Union-Find efficiently keeps track of which nodes (pipeline segments or junctions) belong to the same connected component.</li>
+            <li>When a pipe breaks, you can determine which regions are disconnected using find operations.</li>
+          </ul>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">High-level Working / Steps:</div>
+          <ul class="bullet-list">
+            <li>Consider each junction as a node; connect them (union) when a pipe exists between them.</li>
+            <li>Initially build sets for all connected segments using union operations.</li>
+            <li>When a leak or break is reported, we conceptually "remove" or mark that edge and check which junctions are still in the same set.</li>
+            <li>Components that become separate show which areas lose water.</li>
+          </ul>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Time &amp; Space Efficiency:</div>
+          <ul class="bullet-list">
+            <li>Union / Find (amortized): ~O(1) (technically O(α(n)), inverse Ackermann, almost constant).</li>
+            <li>Space Complexity: O(n) for n junctions.</li>
+          </ul>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Expected Output / Real-world Benefit:</div>
+          <ul class="bullet-list">
+            <li>Faster isolation of problem areas and better control of water pressure.</li>
+            <li>Less wastage of water and reduced disruption for citizens.</li>
+          </ul>
+        </div>
+        
+        <div class="link-placeholder"><a href="dsu.cpp" id="link-dsu">View DSU code</a></div>
+      </div>
+      
+      <!-- Business Case 6 -->
+      <div class="business-case">
+        <h3>Business Case 6: Auto-complete for City Services &amp; Shops</h3>
+        
+        <div class="case-field">
+          <div class="case-field-label">Title:</div>
+          <div class="case-field-content">Smart Search for Shop/Place Names in Sagarika Nagar App</div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Zones Involved:</div>
+          <div class="case-field-content">Commercial Area, Residential Zone, IT Park &amp; Education Hub</div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Real-world Problem:</div>
+          <div class="case-field-content">Citizens use a city app to search "medical", "market street", "Sagarika Tech Park", etc. With thousands of names, normal search becomes slow, especially on mobile internet.</div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Goal / Objective:</div>
+          <div class="case-field-content">Provide fast auto-complete suggestions as the user types.</div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Chosen Data Structure / Algorithm:</div>
+          <div class="case-field-content"><strong>Trie (Prefix Tree)</strong></div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Why This is Suitable:</div>
+          <ul class="bullet-list">
+            <li>Trie stores strings character by character in a tree form, which is very efficient for prefix-based search.</li>
+            <li>Auto-complete is basically: "Show all strings starting with this prefix".</li>
+          </ul>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">High-level Working / Steps:</div>
+          <ul class="bullet-list">
+            <li>Insert all shop, street, and landmark names into a trie, letter by letter.</li>
+            <li>When the user types a prefix (e.g., "Sa"), walk down the trie following those characters.</li>
+            <li>From that node, collect all possible continuations as suggestions ("Sagarika Mall", "Sagarika Tech Park"…).</li>
+            <li>Show top-k results on screen.</li>
+          </ul>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Time &amp; Space Efficiency:</div>
+          <ul class="bullet-list">
+            <li>Insert a word of length L: O(L)</li>
+            <li>Search / Auto-complete for prefix length P: O(P + output_size)</li>
+            <li>Space Complexity: O(total characters of all names).</li>
+          </ul>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Expected Output / Real-world Benefit:</div>
+          <ul class="bullet-list">
+            <li>Fast and user-friendly search experience, helping citizens quickly find services and locations.</li>
+          </ul>
+        </div>
+        
+        <div class="link-placeholder"><a href="trie.cpp" id="link-trie">View Trie code</a></div>
+      </div>
+      
+      <!-- Business Case 7 -->
+      <div class="business-case">
+        <h3>Business Case 7: Fire Emergency Evacuation in IT Park</h3>
+        
+        <div class="case-field">
+          <div class="case-field-label">Title:</div>
+          <div class="case-field-content">Shortest Escape Path in IT Park Buildings</div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Zones Involved:</div>
+          <div class="case-field-content">IT Park &amp; Education Hub</div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Real-world Problem:</div>
+          <div class="case-field-content">In case of fire, people need to know the shortest path to the nearest safe exit in a building or campus.</div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Goal / Objective:</div>
+          <div class="case-field-content">Compute shortest number of steps / doors between any room and nearest exit.</div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Chosen Data Structure / Algorithm:</div>
+          <div class="case-field-content"><strong>BFS (Breadth-First Search) on an Unweighted Graph</strong></div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Why This is Suitable:</div>
+          <ul class="bullet-list">
+            <li>If we assume each corridor/door has equal cost, the building can be treated as an unweighted graph.</li>
+            <li>BFS finds the shortest path in terms of number of edges in such graphs.</li>
+          </ul>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">High-level Working / Steps:</div>
+          <ul class="bullet-list">
+            <li>Represent each room/area as a node and corridors as edges.</li>
+            <li>Mark the exits as target nodes.</li>
+            <li>For each room, or from exits backward, run BFS to compute the minimum distance (in steps) to reach an exit.</li>
+            <li>Store paths and show them on dynamic building maps and emergency display boards.</li>
+          </ul>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Time &amp; Space Efficiency:</div>
+          <ul class="bullet-list">
+            <li>Time Complexity: O(V + E) (V = rooms, E = connections).</li>
+            <li>Space Complexity: O(V) for queues and visited arrays.</li>
+          </ul>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Expected Output / Real-world Benefit:</div>
+          <ul class="bullet-list">
+            <li>Clear, pre-computed escape routes, faster evacuation, fewer casualties in emergencies.</li>
+          </ul>
+        </div>
+        
+        <div class="link-placeholder"><a href="bfs.cpp" id="link-bfs">View BFS code</a></div>
+      </div>
+      
+      <!-- Business Case 8 -->
+      <div class="business-case">
+        <h3>Business Case 8: Optimised Truck Scheduling in Industrial Zone</h3>
+        
+        <div class="case-field">
+          <div class="case-field-label">Title:</div>
+          <div class="case-field-content">Sort Incoming and Outgoing Truck Schedules</div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Zones Involved:</div>
+          <div class="case-field-content">Industrial &amp; Logistics Zone, Airport &amp; Transport Hub</div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Real-world Problem:</div>
+          <div class="case-field-content">Many trucks bring raw materials and take finished goods daily. If arrival and departure times are unsorted, docks and loading bays become congested.</div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Goal / Objective:</div>
+          <div class="case-field-content">Sort truck schedules by arrival time, departure time, or load priority.</div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Chosen Data Structure / Algorithm:</div>
+          <div class="case-field-content"><strong>Merge Sort</strong> (a stable sorting algorithm)</div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Why This is Suitable:</div>
+          <ul class="bullet-list">
+            <li>Merge sort is efficient and gives O(n log n) time in worst case, unlike quick sort which can become O(n²) in bad cases.</li>
+            <li>It is stable, so trucks with same arrival time maintain their original priority order.</li>
+          </ul>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">High-level Working / Steps:</div>
+          <ul class="bullet-list">
+            <li>Take the list of trucks with fields like (arrival_time, priority, dock_number).</li>
+            <li>Recursively divide the list into halves until single elements remain.</li>
+            <li>Merge the halves back together in sorted order using the chosen key (e.g., arrival_time).</li>
+            <li>Use the sorted list to create a clear dock schedule.</li>
+          </ul>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Time &amp; Space Efficiency:</div>
+          <ul class="bullet-list">
+            <li>Time Complexity: O(n log n)</li>
+            <li>Space Complexity: O(n) extra space for merging.</li>
+          </ul>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Expected Output / Real-world Benefit:</div>
+          <ul class="bullet-list">
+            <li>Reduced waiting time for trucks, less congestion, better use of docks and manpower.</li>
+          </ul>
+        </div>
+        
+        <div class="link-placeholder"><a href="merge_sort.cpp" id="link-mergesort">View Merge Sort code</a></div>
+      </div>
+      
+      <!-- Business Case 9 -->
+      <div class="business-case">
+        <h3>Business Case 9: Smart Filtering of Citizen Complaints</h3>
+        
+        <div class="case-field">
+          <div class="case-field-label">Title:</div>
+          <div class="case-field-content">Detect Offensive or Urgent Keywords in Complaint Messages</div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Zones Involved:</div>
+          <div class="case-field-content">Entire City (Residential, Commercial, IT Park, etc.)</div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Real-world Problem:</div>
+          <div class="case-field-content">The city's grievance portal receives thousands of text complaints daily. Staff must quickly detect messages with urgent words like "fire", "accident", "collapse" or filter out abusive language.</div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Goal / Objective:</div>
+          <div class="case-field-content">Fast pattern matching of important keywords inside long text complaints.</div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Chosen Data Structure / Algorithm:</div>
+          <div class="case-field-content"><strong>Knuth–Morris–Pratt (KMP) String Matching</strong></div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Why This is Suitable:</div>
+          <ul class="bullet-list">
+            <li>KMP avoids re-checking characters unnecessarily and gives linear time matching of a pattern in a text.</li>
+            <li>Useful when we repeatedly search many complaints for the same set of key patterns.</li>
+          </ul>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">High-level Working / Steps:</div>
+          <ul class="bullet-list">
+            <li>Preprocess the keyword/pattern (e.g., "fire in building") to create KMP's prefix table (LPS array).</li>
+            <li>For each complaint, run KMP to check if the pattern appears in the text.</li>
+            <li>If found, tag the complaint as high priority or contains abusive language.</li>
+            <li>Route urgent complaints to emergency teams and others to normal departments.</li>
+          </ul>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Time &amp; Space Efficiency:</div>
+          <ul class="bullet-list">
+            <li>Pattern Preprocessing: O(m) where m = length of pattern.</li>
+            <li>Text Search: O(n) where n = length of complaint text.</li>
+            <li>Space Complexity: O(m) for prefix table.</li>
+          </ul>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Expected Output / Real-world Benefit:</div>
+          <ul class="bullet-list">
+            <li>Faster identification of critical issues, quicker response by authorities, and automatic filtering of abusive content.</li>
+          </ul>
+        </div>
+        
+        <div class="link-placeholder"><a href="kmp.cpp" id="link-kmp">View KMP code</a></div>
+      </div>
+      
+      <!-- Business Case 10 -->
+      <div class="business-case">
+        <h3>Business Case 10: Smart Parking Management at Airport &amp; Malls</h3>
+        
+        <div class="case-field">
+          <div class="case-field-label">Title:</div>
+          <div class="case-field-content">Balanced Parking Slot Allocation near Airport and Central Malls</div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Zones Involved:</div>
+          <div class="case-field-content">Airport &amp; Transport Hub, Commercial Area</div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Real-world Problem:</div>
+          <div class="case-field-content">Parking lots near the airport and big malls often get full in some sections while other sections still have space. Searching randomly wastes time and fuel.</div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Goal / Objective:</div>
+          <div class="case-field-content">Quickly find the nearest available parking slot and keep parking distribution balanced.</div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Chosen Data Structure / Algorithm:</div>
+          <div class="case-field-content"><strong>AVL Tree (Self-Balancing Binary Search Tree)</strong></div>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Why This is Suitable:</div>
+          <ul class="bullet-list">
+            <li>Each parking slot (or block) can be stored in an AVL tree ordered by some key: distance from entrance, slot number, or level.</li>
+            <li>AVL tree keeps itself height-balanced, so search, insert, and delete operations are all O(log n).</li>
+          </ul>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">High-level Working / Steps:</div>
+          <ul class="bullet-list">
+            <li>Represent each free slot as a node in an AVL tree, key based on distance or preference.</li>
+            <li>When a car arrives, search the tree for the best suitable slot (e.g., smallest distance).</li>
+            <li>On allocation, remove that slot from the tree.</li>
+            <li>When a car leaves, insert that slot back into the tree.</li>
+            <li>The tree rotations keep it balanced automatically.</li>
+          </ul>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Time &amp; Space Efficiency:</div>
+          <ul class="bullet-list">
+            <li>Search / Insert / Delete: O(log n) each.</li>
+            <li>Space Complexity: O(n) for n parking slots.</li>
+          </ul>
+        </div>
+        
+        <div class="case-field">
+          <div class="case-field-label">Expected Output / Real-world Benefit:</div>
+          <ul class="bullet-list">
+            <li>Drivers get parking quickly, reduced circling and congestion, better user experience and improved revenue tracking.</li>
+          </ul>
+        </div>
+        
+        <div class="link-placeholder"><a href="avl.cpp" id="link-avl">View AVL code</a></div>
+      </div>
+      
+      <!-- Conclusion -->
+      <div class="conclusion">
+        <h2>✅ Conclusion</h2>
+        <p>Using the Sagarika Nagar city map, we demonstrated how basic DAA algorithms such as <strong>BFS, DFS, Dijkstra, Greedy, Scheduling, Linear Search, and Binary Search</strong> can be applied to real-life city planning and business problems.</p>
+        <p>These cases clearly show how algorithmic thinking improves <strong>efficiency, safety, and resource utilization</strong> in a smart city.</p>
+      </div>
+      
+      <div style="text-align: center; margin-top: 3rem;">
+        <a href="DAA website 2 1.html" style="display: inline-block; padding: 1rem 2rem; background: #667eea; color: white; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);">← Back to Main Portfolio</a>
+      </div>
+    </div>
   </body>
 </html>
+
 
