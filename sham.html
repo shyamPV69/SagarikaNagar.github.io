@@ -47,7 +47,7 @@
       }
       body { 
         font-family: 'Inter', 'Segoe UI', Arial, sans-serif; 
-        background: linear-gradient(135deg, #69d6fa 0%, #0448f5 100%);
+        background: linear-gradient(135deg, #69d6fa 0%, #0849ed 100%);
         color: #333; 
         padding: 2rem;
         line-height: 1.7;
@@ -182,7 +182,7 @@
       }
       
       .bullet-list li:before {
-        content: "✓";
+        content: "*";
         position: absolute;
         left: 0;
         color: #1e40af;
@@ -247,7 +247,7 @@
       }
       
       .link-placeholder a {
-        color: white;
+        color: rgb(241, 244, 246);
         background: #1e40af;
         text-decoration: none;
         font-weight: 600;
@@ -259,9 +259,9 @@
       }
       
       .link-placeholder a:hover {
-        background: #1e3a8a;
+        background: #6890f7;
         transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+        box-shadow: 0 4px 12px rgba(2, 13, 48, 0.3);
       }
     </style>
 </head>
@@ -315,8 +315,8 @@
           <p style="margin: 0.8rem 0;">Needs smart parking, quick security checks, and fast connection to other city zones.</p>
         </div>
       </section>
-      
-      <div class="divider"></div>
+
+
       
       <!-- SECTION B: BUSINESS CASES 1-10 -->
       <section>
@@ -982,11 +982,362 @@
         <div class="link-placeholder"><a href="avl.cpp" id="link-avl">View AVL code</a></div>
       </div>
       
+      <!-- Data Structures Examples -->
+      <section>
+        <h2>DATA STRUCTURES – EXAMPLES AND CODE</h2>
+        <div class="content">
+          
+          <h3> Arrays</h3>
+          <h4>Algorithm</h4>
+          <p>Arrays are used here to store a collection of fixed-size, sequential elements. The <strong>cities</strong> array holds location names (strings), and the <strong>distances</strong> array holds corresponding numeric values (floats) for quick, direct access via index.</p>
+          <h4>Time Complexity</h4>
+          <ul class="bullet-list">
+            <li>Access: $O(1)$</li>
+            <li>Search (Unsorted): $O(n)$</li>
+            <li>Space Complexity: $O(n)$</li>
+          </ul>
+          <h4>Explanation</h4>
+          <p>The code uses two parallel arrays to store city names and their distances from a starting point ("Sagarika Nagar"). A simple <code>for</code> loop iterates through the fixed-size arrays to print each city and its associated distance, illustrating $O(1)$ indexed retrieval.</p>
+          
+          <div class="link-placeholder"><a href="arrays.cpp" id="link-arrays">View Arrays code</a></div>
+
+          <div class="divider"></div>
+
+          <h3> Structures</h3>
+          <h4>Algorithm</h4>
+          <p>Structures (structs) are user-defined data types that logically group related data items of different types under a single name. This allows for creating complex data records, like a <strong>City</strong> object containing a name, distance, and zone.</p>
+          <h4>Time Complexity</h4>
+          <ul class="bullet-list">
+            <li>Access to members: $O(1)$</li>
+            <li>Space Complexity: $O(1)$ per struct instance</li>
+          </ul>
+          <h4>Explanation</h4>
+          <p>A <strong>City</strong> structure is defined to hold three related pieces of information: <strong>name</strong> (string), <strong>distance</strong> (float), and <strong>zone</strong> (string). The <code>main</code> function creates and initializes instances of this structure (<code>city1</code>, <code>city2</code>) and then accesses and prints the grouped data using the dot (<code>.</code>) operator.</p>
+
+          <div class="link-placeholder"><a href="structures.cpp" id="link-structures">View Structures code</a></div>
+
+          <div class="divider"></div>
+
+          <h3> Linked List</h3>
+          <h4>Algorithm</h4>
+          <p>A Linked List is a dynamic, linear data structure where elements are stored in <strong>Nodes</strong>. Each Node contains data (location) and a reference (<strong>next</strong>) to the next Node in the sequence. It is efficient for sequential travel path storage and for insertions/deletions.</p>
+          <h4>Time Complexity</h4>
+          <ul class="bullet-list">
+            <li>Insertion/Deletion (at end, in this code): $O(n)$</li>
+            <li>Insertion/Deletion (at head): $O(1)$</li>
+            <li>Search: $O(n)$</li>
+            <li>Space Complexity: $O(n)$</li>
+          </ul>
+          <h4>Explanation</h4>
+          <p>The code implements a basic singly linked list to represent a travel path. Each Node holds a location name and a pointer to the next node. The <code>addLocation</code> function traverses to the end of the list ($O(n)$) to append a new city, and <code>displayPath</code> iterates through the nodes to print the route.</p>
+          
+          <div class="link-placeholder"><a href="linked_list.cpp" id="link-linkedlist">View Linked List code</a></div>
+
+          <div class="divider"></div>
+
+          <h3> Stack</h3>
+          <h4>Algorithm</h4>
+          <p>A Stack is a LIFO (Last-In, First-Out) data structure. In a map context, it's ideal for keeping track of the path taken to facilitate backtracking, like when a mapping algorithm needs to "undo" the last move.</p>
+          <h4>Time Complexity</h4>
+          <ul class="bullet-list">
+            <li>Push/Pop: $O(1)$</li>
+            <li>Access: $O(n)$</li>
+            <li>Space Complexity: $O(n)$</li>
+          </ul>
+          <h4>Explanation</h4>
+          <p>The <code>std::stack</code> container is used to store <strong>visitedLocations</strong>. Cities are added using <code>push()</code>, and they are retrieved and removed in the reverse order of insertion using <code>top()</code> and <code>pop()</code>. This simulates a <strong>backtracking</strong> process, where the program returns from the last visited location first.</p>
+         
+          <div class="link-placeholder"><a href="stack.cpp" id="link-stack">View Stack code</a></div>
+
+          <div class="divider"></div>
+
+          <h3> Queue</h3>
+          <h4>Algorithm</h4>
+          <p>A Queue is a FIFO (First-In, First-Out) data structure. It's a fundamental component of the Breadth-First Search (BFS) algorithm, where locations at the current depth level are visited before moving to the next level.</p>
+          <h4>Time Complexity</h4>
+          <ul class="bullet-list">
+            <li>Enqueue (Push)/Dequeue (Pop): $O(1)$</li>
+            <li>Access: $O(n)$</li>
+            <li>Space Complexity: $O(n)$</li>
+          </ul>
+          <h4>Explanation</h4>
+          <p>The <code>std::queue</code> container stores locations to be visited in a FIFO order. Cities are added with <code>push()</code> and processed with <code>front()</code> followed by <code>pop()</code>. This structure represents the order in which locations are explored during a <strong>Breadth-First Search (BFS)</strong> pathfinding approach.</p>
+       
+          <div class="link-placeholder"><a href="queue.cpp" id="link-queue">View Queue code</a></div>
+        </div>
+      </section>
+
+      <!-- Advanced Data Structures (6–10) -->
+      <section>
+        <h2>ADVANCED DATA STRUCTURES – EXAMPLES AND LINKS</h2>
+        <div class="content">
+          
+          <h3> Binary Tree</h3>
+          <h4>Algorithm</h4>
+          <p>A Binary Tree is a hierarchical data structure where each node has at most two children, referred to as the left child and the right child. It is used here to model hierarchical relationships, such as dividing a map into progressively smaller regions.</p>
+          <h4>Time Complexity</h4>
+          <ul class="bullet-list">
+            <li>Insertion/Search (Unbalanced): $O(n)$</li>
+            <li>Traversal: $O(n)$</li>
+            <li>Space Complexity: $O(n)$</li>
+          </ul>
+          <h4>Explanation</h4>
+          <p>This code defines a <strong>TreeNode</strong> structure to represent map regions. It manually constructs a small binary tree, with "Sagarika Nagar" as the root. The <code>preorderTraversal</code> function recursively visits the nodes in the order: root → left subtree → right subtree.</p>
+          <div class="link-placeholder"><a href="binary_tree.cpp" id="link-binarytree">View Binary Tree code</a></div>
+
+          <div class="divider"></div>
+
+          <h3> Binary Search Tree</h3>
+          <h4>Algorithm</h4>
+          <p>A Binary Search Tree (BST) is a binary tree where the left child's key is always less than the parent's key, and the right child's key is always greater. This enables efficient searching and insertion.</p>
+          <h4>Time Complexity</h4>
+          <ul class="bullet-list">
+            <li>Insertion/Search (Average): $O(\log n)$</li>
+            <li>Insertion/Search (Worst Case – Unbalanced): $O(n)$</li>
+            <li>Inorder Traversal: $O(n)$</li>
+            <li>Space Complexity: $O(n)$</li>
+          </ul>
+          <h4>Explanation</h4>
+          <p>The <strong>BSTNode</strong> stores a city name and its distance as the key. The <code>insert</code> function maintains the BST property, and <strong>inorder</strong> traversal prints cities sorted by distance.</p>
+          <div class="link-placeholder"><a href="bst.cpp" id="link-bst">View BST code</a></div>
+
+          <div class="divider"></div>
+
+          <h3> 2‑3 Tree</h3>
+          <h4>Algorithm</h4>
+          <p>A 2‑3 Tree is a self-balancing search tree where internal nodes have two or three children and one or two keys. All leaves are at the same level.</p>
+          <h4>Time Complexity</h4>
+          <ul class="bullet-list">
+            <li>Insertion/Search: $O(\log n)$</li>
+            <li>Space Complexity: $O(n)$</li>
+          </ul>
+          <h4>Explanation</h4>
+          <p>A simplified, hardcoded structure shows <strong>TwoThreeNode</strong> keys and children. The <code>traverse23</code> function demonstrates an inorder‑like traversal.</p>
+          <div class="link-placeholder"><a href="two_three_tree.cpp" id="link-23tree">View 2‑3 Tree code</a></div>
+
+          <div class="divider"></div>
+
+          <h3> Red‑Black Tree</h3>
+          <h4>Algorithm</h4>
+          <p>A Red‑Black Tree is a self‑balancing BST that guarantees $O(\log n)$ search, insert, and delete by enforcing coloring and rotation properties.</p>
+          <h4>Time Complexity</h4>
+          <ul class="bullet-list">
+            <li>Insertion/Search: $O(\log n)$</li>
+            <li>Space Complexity: $O(n)$</li>
+          </ul>
+          <h4>Explanation</h4>
+          <p>A simplified structure demonstrates inserts and a preorder <strong>display</strong> with node colors.</p>
+          <div class="link-placeholder"><a href="red_black_tree.cpp" id="link-rbt">View Red‑Black Tree code</a></div>
+
+          <div class="divider"></div>
+
+          <h3> Lookup Table (Hash Map)</h3>
+          <h4>Algorithm</h4>
+          <p>A direct lookup table using <code>std::unordered_map</code> for near $O(1)$ average lookups, insertions, and deletions.</p>
+          <h4>Time Complexity</h4>
+          <ul class="bullet-list">
+            <li>Insertion/Search/Deletion (Average): $O(1)$</li>
+            <li>Insertion/Search/Deletion (Worst Case – Collision): $O(n)$</li>
+            <li>Space Complexity: $O(n)$</li>
+          </ul>
+          <h4>Explanation</h4>
+          <p>Stores predefined routes like "Sagarika Nagar to Kundapura" mapped to distances for fast retrieval.</p>
+          <div class="link-placeholder"><a href="lookup_table.cpp" id="link-lookup">View Lookup Table code</a></div>
+        </div>
+      </section>
+
+      <!-- More Data Structures (11–15) -->
+      <section>
+        <div class="content">
+          
+          <h3> Sparse Table</h3>
+          <h4>Algorithm</h4>
+          <p>A Sparse Table answers RMQ (Range Minimum Query) on a static array by preprocessing in $O(n \log n)$ and answering queries in $O(1)$.</p>
+          <h4>Time Complexity</h4>
+          <ul class="bullet-list">
+            <li>Preprocessing: $O(n \log n)$</li>
+            <li>Query: $O(1)$</li>
+            <li>Space: $O(n \log n)$</li>
+          </ul>
+          <h4>Explanation</h4>
+          <p>The structure stores minimums for ranges of length \(2^k\) and answers each query by combining two precomputed blocks.</p>
+          <div class="link-placeholder"><a href="sparse_table.cpp" id="link-sparse">View Sparse Table code</a></div>
+
+          <div class="divider"></div>
+
+          <h3> Fenwick Tree (BIT)</h3>
+          <h4>Algorithm</h4>
+          <p>A Fenwick Tree maintains prefix sums with both updates and queries in $O(\log n)$.</p>
+          <h4>Time Complexity</h4>
+          <ul class="bullet-list">
+            <li>Update: $O(\log n)$</li>
+            <li>Prefix Sum Query: $O(\log n)$</li>
+            <li>Space: $O(n)$</li>
+          </ul>
+          <h4>Explanation</h4>
+          <p>Distances are aggregated in a tree-shaped array; updates propagate upward and queries accumulate downward.</p>
+          <div class="link-placeholder"><a href="fenwick_tree.cpp" id="link-fenwick">View Fenwick Tree code</a></div>
+
+          <div class="divider"></div>
+
+          <h3> Skip List</h3>
+          <h4>Algorithm</h4>
+          <p>A probabilistic ordered structure with multiple levels that provides expected $O(\log n)$ search, insert, and delete.</p>
+          <h4>Time Complexity</h4>
+          <ul class="bullet-list">
+            <li>Average operations: $O(\log n)$</li>
+            <li>Worst case: $O(n)$</li>
+            <li>Space: $O(n)$ (average)</li>
+          </ul>
+          <h4>Explanation</h4>
+          <p>Higher levels act like express lanes to quickly narrow down positions for operations.</p>
+          <div class="link-placeholder"><a href="skip_list.cpp" id="link-skiplist">View Skip List code</a></div>
+
+          <div class="divider"></div>
+
+          <h3> DFS (Depth-First Search)</h3>
+          <h4>Algorithm</h4>
+          <p>Traverses graphs deeply using a stack, visiting along branches before backtracking.</p>
+          <h4>Time Complexity</h4>
+          <ul class="bullet-list">
+            <li>$O(V + E)$</li>
+            <li>Space: $O(V)$</li>
+          </ul>
+          <h4>Explanation</h4>
+          <p>An adjacency list represents city connections; the traversal prints visited nodes.</p>
+          <div class="link-placeholder"><a href="dfs.cpp" id="link-dfs">View DFS code</a></div>
+
+          <div class="divider"></div>
+
+          <h3> Bubble Sort</h3>
+          <h4>Algorithm</h4>
+          <p>Repeatedly compares and swaps adjacent elements until the array is sorted.</p>
+          <h4>Time Complexity</h4>
+          <ul class="bullet-list">
+            <li>Worst/Average: $O(n^2)$</li>
+            <li>Best (already sorted): $O(n)$</li>
+            <li>Space: $O(1)$</li>
+          </ul>
+          <h4>Explanation</h4>
+          <p>Sorts distances and keeps city names aligned, producing cities ordered by closest distance.</p>
+          <div class="link-placeholder"><a href="bubble_sort.cpp" id="link-bubblesort">View Bubble Sort code</a></div>
+        </div>
+      </section>
+<!-- Sorting & String Search (16–20) -->
+      <section>
+        <h2></h2>
+        <div class="content">
+          
+          <h3> Selection Sort</h3>
+          <h4>Algorithm</h4>
+          <p>Selection Sort divides the array into sorted and unsorted parts, repeatedly selecting the minimum from the unsorted portion and placing it at the beginning.</p>
+          <h4>Time Complexity</h4>
+          <ul class="bullet-list">
+            <li>Worst/Average/Best: $O(n^2)$</li>
+            <li>Space: $O(1)$</li>
+          </ul>
+          <h4>Explanation</h4>
+          <p>Finds the smallest distance index in the remaining range and swaps it with the current position to build a sorted list of closest cities.</p>
+          <div class="link-placeholder"><a href="selection_sort.cpp" id="link-selection">View Selection Sort code</a></div>
+
+          <div class="divider"></div>
+
+          <h3> Insertion Sort</h3>
+          <h4>Algorithm</h4>
+          <p>Insertion Sort builds the sorted array one element at a time by inserting the current element into its correct position among previously sorted elements.</p>
+          <h4>Time Complexity</h4>
+          <ul class="bullet-list">
+            <li>Worst/Average: $O(n^2)$</li>
+            <li>Best (already sorted): $O(n)$</li>
+            <li>Space: $O(1)$</li>
+          </ul>
+          <h4>Explanation</h4>
+          <p>Shifts larger distances right and inserts the current city/distance pair into the correct position.</p>
+          <div class="link-placeholder"><a href="insertion_sort.cpp" id="link-insertion">View Insertion Sort code</a></div>
+
+          <div class="divider"></div>
+
+          <h3> Quick Sort</h3>
+          <h4>Algorithm</h4>
+          <p>Quick Sort uses divide-and-conquer with a pivot to partition distances into less and greater groups, then recursively sorts subarrays.</p>
+          <h4>Time Complexity</h4>
+          <ul class="bullet-list">
+            <li>Average: $O(n \log n)$</li>
+            <li>Worst: $O(n^2)$</li>
+            <li>Space: $O(\log n)$</li>
+          </ul>
+          <h4>Explanation</h4>
+          <p>Partitions around a pivot distance and keeps city names aligned, yielding efficient sorting by distance.</p>
+          <div class="link-placeholder"><a href="quick_sort.cpp" id="link-quick">View Quick Sort code</a></div>
+
+          <div class="divider"></div>
+
+          <h3> Brute Force String Search</h3>
+          <h4>Algorithm</h4>
+          <p>Checks for a pattern at every possible starting position by comparing all characters, a simple baseline for matching.</p>
+          <h4>Time Complexity</h4>
+          <ul class="bullet-list">
+            <li>$O(n \cdot m)$</li>
+            <li>Space: $O(1)$</li>
+          </ul>
+          <h4>Explanation</h4>
+          <p>Scans city names for exact matches of a substring and reports positions where matches occur.</p>
+          <div class="link-placeholder"><a href="brute_force_search.cpp" id="link-bruteforce">View Brute Force Search code</a></div>
+
+          <div class="divider"></div>
+
+          <h3> Rabin‑Karp</h3>
+          <h4>Algorithm</h4>
+          <p>Uses rolling hash to quickly compare hash values of substrings with the pattern, verifying matches when hashes align.</p>
+          <h4>Time Complexity</h4>
+          <ul class="bullet-list">
+            <li>Average: $O(n + m)$</li>
+            <li>Worst (collisions): $O(n \cdot m)$</li>
+            <li>Space: $O(1)$</li>
+          </ul>
+          <h4>Explanation</h4>
+          <p>Computes the pattern hash and slides a window across the text, updating the hash in constant time to find matches quickly.</p>
+          <div class="link-placeholder"><a href="rabin_karp.cpp" id="link-rabinkarp">View Rabin‑Karp code</a></div>
+        </div>
+      </section>
+       <!-- Sorting & String Search (21–22) -->
+      <section>
+        <h2></h2>
+        <div class="content">
+          
+          <h3> Boyer‑Moore</h3>
+          <h4>Algorithm</h4>
+          <p>The Boyer‑Moore string search checks the pattern from right to left and uses heuristics to skip large sections of text.</p>
+          <h4>Time Complexity</h4>
+          <ul class="bullet-list">
+            <li>Best: $O(n/m)$</li>
+            <li>Worst: $O(n \cdot m)$</li>
+            <li>Space: $O(|\Sigma|)$</li>
+          </ul>
+          <h4>Explanation</h4>
+          <p>Implements the Bad Character heuristic by precomputing last occurrence positions to determine efficient right shifts on mismatch.</p>
+          <div class="link-placeholder"><a href="boyer_moore.cpp" id="link-bm">View Boyer‑Moore code</a></div>
+
+          <div class="divider"></div>
+
+          <h3> Heap Sort</h3>
+          <h4>Algorithm</h4>
+          <p>Heap Sort builds a max‑heap of distances, repeatedly extracts the maximum, and heapifies the reduced array to produce sorted output.</p>
+          <h4>Time Complexity</h4>
+          <ul class="bullet-list">
+            <li>Worst/Average/Best: $O(n \log n)$</li>
+            <li>Space: $O(1)$</li>
+          </ul>
+          <h4>Explanation</h4>
+          <p>Synchronizes city names with distances while heapifying and swapping to output farthest‑to‑closest ordering.</p>
+          <div class="link-placeholder"><a href="heap_sort.cpp" id="link-heapsort">View Heap Sort code</a></div>
+        </div>
+      </section>
+
       <!-- Conclusion -->
       <div class="conclusion">
-        <h2>✅ Conclusion</h2>
-        <p>Using the Sagarika Nagar city map, we demonstrated how basic DAA algorithms such as <strong>BFS, DFS, Dijkstra, Greedy, Scheduling, Linear Search, and Binary Search</strong> can be applied to real-life city planning and business problems.</p>
-        <p>These cases clearly show how algorithmic thinking improves <strong>efficiency, safety, and resource utilization</strong> in a smart city.</p>
+        <h2> Conclusion</h2>
+        <p>The Smart City design for Sagarika Nagar demonstrates how diverse Data Structures and Algorithms can solve real-world urban challenges efficiently. By applying shortest-path algorithms, balanced trees, hashing, and advanced pattern-matching techniques, the city can optimize transportation, emergency response, utilities, parking, and digital citizen services. Each algorithm enhances decision-making speed, reduces resource wastage, and improves overall city management. This project shows that DAA is not just theoretical-it directly supports smarter, safer, and more efficient city planning.</p>
       </div>
       
       <div style="text-align: center; margin-top: 3rem;">
@@ -995,5 +1346,8 @@
     </div>
   </body>
 </html>
+
+
+
 
 
